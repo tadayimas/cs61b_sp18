@@ -82,10 +82,10 @@ public class IntList {
 
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
-//        if(A == null) {
-//            A = B;
-//            return A;
-//        }
+        if(A == null) {
+            A = B;
+            return A;
+        }
         // This method will not modify A when A is null and B is not.
         // even the method is called "dcatenate".
         // Ideally, it should change A (which is null) into B, but we can't in practice.
@@ -105,9 +105,12 @@ public class IntList {
      */
     public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
+        if(A == null && B == null) return null;
+        if(A == null) return catenate(B, null);
+
         IntList C;
         IntList p;
-        C = new IntList(A.first, null);  // we just ignore the case that A is null!
+        C = new IntList(A.first, null);
         p = C;
         A = A.rest;
         while(A != null) {
@@ -130,6 +133,7 @@ public class IntList {
         }
         p.rest = catenate(B, null);
         return C;
+
 
     }
 

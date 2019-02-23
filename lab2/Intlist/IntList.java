@@ -82,7 +82,21 @@ public class IntList {
 
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+//        if(A == null) {
+//            A = B;
+//            return A;
+//        }
+        // This method will not modify A when A is null and B is not.
+        // even the method is called "dcatenate".
+        // Ideally, it should change A (which is null) into B, but we can't in practice.
+        // so let's just assume that A is not null.
+
+        IntList p = A;
+        while(p.rest != null) {
+            p = p.rest;
+        }
+        p.rest = B;
+        return A;
     }
 
     /**
@@ -91,7 +105,32 @@ public class IntList {
      */
     public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        IntList C;
+        IntList p;
+        C = new IntList(A.first, null);  // we just ignore the case that A is null!
+        p = C;
+        A = A.rest;
+        while(A != null) {
+            p.rest = new IntList(A.first, null);
+            p = p.rest;
+            A = A.rest;
+        }
+
+        // Iterative version to link B:
+//        while(B != null) {
+//            p.rest = new IntList(B.first, null);
+//            p = p.rest;
+//            B = B.rest;
+//        }
+//        return C;
+
+        // Recursion version to link B:
+        if (B == null) {
+            return C;
+        }
+        p.rest = catenate(B, null);
+        return C;
+
     }
 
 

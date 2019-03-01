@@ -93,7 +93,7 @@ public class LinkedListDeque<T> {
 
     /* Gets the item at the given index */
     public T get(int index) {
-        if (index < 0 || index > size-1) {
+        if (index < 0 || index > size - 1) {
             return null;
         }
         Node ptr = sentinel.next;
@@ -105,17 +105,17 @@ public class LinkedListDeque<T> {
 
     /* Same as get(int index), but uses recursion */
     public T getRecursive(int index) {
-        if (index < 0 || index > size-1) {
+        if (index < 0 || index > size - 1) {
             return null;
         }
         return getRecursive(sentinel.next, index);
     }
 
-    private T getRecursive(Node n, int index){
+    private T getRecursive(Node n, int index) {
         if (index == 0) {
             return n.item;
         }
-        return getRecursive(n.next, index-1);
+        return getRecursive(n.next, index - 1);
     }
 
 

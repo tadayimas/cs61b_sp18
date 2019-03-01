@@ -82,9 +82,9 @@ public class ArrayDeque<T> {
             return null;
         }
 
-        double Factor = 0.25;
-        double factor = ((double) size) / items.length;
-        if (factor < Factor) {
+        double scale = 0.25;
+        double ratio = ((double) size) / items.length;
+        if (ratio < scale) {
             resize(0.5);
         }
 
@@ -103,9 +103,9 @@ public class ArrayDeque<T> {
             return null;
         }
 
-        double Factor = 0.25;
-        double factor = ((double) size) / items.length;
-        if (factor < Factor) {
+        double scale = 0.25;
+        double ratio = ((double) size) / items.length;
+        if (ratio < scale) {
             resize(0.5);
         }
 
@@ -123,10 +123,7 @@ public class ArrayDeque<T> {
         if (index < 0 || index > size - 1) {
             return null;
         }
-        int p = mod((nextFirst + 1), items.length);
-        for (int i = 0; i < index; i++) {
-            p = mod((p + 1), items.length);
-        }
+        int p = mod((nextFirst + 1 + index), items.length);
         return items[p];
 
     }

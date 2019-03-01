@@ -12,17 +12,16 @@ public class ArrayDeque<T> {
             p = (p + 1) % items.length;
         }
 
-        size = (int) (size * factor);
         items = items2;
-        nextFirst = size - 1;
-        nextLast = 0;
+        nextFirst = items.length - 1;
+        nextLast = size;
     }
 
     /* Creates an empty array deque */
     public ArrayDeque() {
         size = 0;
-        nextFirst = items.length-1;
-        nextLast = 0;
+        nextFirst = items.length - 1;
+        nextLast = size;
     }
 
 

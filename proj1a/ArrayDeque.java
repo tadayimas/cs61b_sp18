@@ -5,7 +5,7 @@ public class ArrayDeque<T> {
     private int nextLast;
 
     private void resize(double factor){
-        T[] items2 = (T []) new Object[(int) (size * factor)];
+        T[] items2 = (T []) new Object[(int) (items.length * factor)];
         int p = (nextFirst + 1) % items.length;
         for(int i = 0; i < size; i++) {
             items2[i] = items[p];
@@ -43,7 +43,7 @@ public class ArrayDeque<T> {
 
     /* Returns true if deque is empty, false otherwise */
     public boolean isEmpty() {
-        if(size == 0) return true;
+        if (size == 0) return true;
         return false;
     }
     /* Returns the number of items in the deque */
@@ -53,7 +53,7 @@ public class ArrayDeque<T> {
 
     /* Prints the items in the deque from first to last */
     public void printDeque() {
-        int p = nextFirst - 1;
+        int p = (nextFirst + 1) % items.length;
         for(int i = 0; i < size; i++) {
             System.out.print(items[p]);
             System.out.print(' ');
@@ -64,9 +64,13 @@ public class ArrayDeque<T> {
     /* Removes and returns the item at the front of the deque */
     public T removeFirst() {
         if(size == 0) return null;
-        if(size/items.length < 0.25) resize(0.5);
-        int p = (nextFirst + 1) % items.length;
 
+        double FACTOR = 0.25;
+        double factor = ((double)size) / items.length;
+        if(factor < FACTOR) resize(0.5);
+
+        int p = (nextFirst + 1) % items.length;
+        nextFirst = p;
         T temp = items[p];
         items[p] = null;
         size -= 1;
@@ -77,9 +81,13 @@ public class ArrayDeque<T> {
     /* Removes and returns the item at the back of the deque */
     public T removeLast() {
         if(size == 0) return null;
-        if(size/items.length < 0.25) resize(0.5);
-        int p = (nextLast - 1) % items.length;
 
+        double FACTOR = 0.25;
+        double factor = ((double)size) / items.length;
+        if(factor < FACTOR) resize(0.5);
+
+        int p = (nextLast - 1) % items.length;
+        nextLast = p;
         T temp = items[p];
         items[p] = null;
         size -= 1;

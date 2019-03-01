@@ -6,6 +6,13 @@ public class ArrayDequeTest {
 
     }
 
+    public static void testAddLast(){
+        ArrayDeque<Integer> A = new ArrayDeque<>();
+        A.addLast(1);
+        A.addLast(2);
+
+    }
+
     public static void testGet(){
         ArrayDeque<Integer> A = new ArrayDeque<>();
 
@@ -20,11 +27,49 @@ public class ArrayDequeTest {
 
     }
 
+    public static void testPrintDeque(){
+        ArrayDeque<Integer> A = new ArrayDeque<>();
 
+        for(int i=0; i<20;i++) {
+            A.addLast(i+1);
+        }
+        A.printDeque();
+
+    }
+
+    public static void testRemoveFirst(){
+        ArrayDeque<Integer> A = new ArrayDeque<>();
+        System.out.println(A.removeFirst());
+
+        for(int i=0; i<20;i++) {
+            A.addLast(i+1);
+        }
+
+        for(int i=0; i<20;i++) {
+            System.out.println(A.removeFirst());
+        }
+
+
+    }
+
+    public static void testRemoveLast(){
+        ArrayDeque<Integer> A = new ArrayDeque<>();
+        System.out.println(A.removeLast());
+
+        for(int i=0; i<20;i++) {
+            A.addLast(i+1);
+        }
+
+        for(int i=0; i<20;i++) {
+            System.out.println(A.removeLast());
+        }
+
+
+    }
 
 
     public static void main(String args[]) {
-        testGet();
+        testRemoveLast();
     }
 
 }

@@ -23,7 +23,7 @@ public class ArrayDequeTest {
     public static void testGet() {
         ArrayDeque<Integer> A = new ArrayDeque<>();
 
-        for(int i = 0; i < 120; i++) {
+        for (int i = 0; i < 120; i++) {
             A.addLast(i + 1);
         }
         int actual = A.get(4);
@@ -37,7 +37,7 @@ public class ArrayDequeTest {
     public static void testPrintDeque() {
         ArrayDeque<Integer> A = new ArrayDeque<>();
 
-        for(int i = 0; i < 20; i++) {
+        for (int i = 0; i < 20; i++) {
             A.addLast(i + 1);
         }
         A.printDeque();
@@ -48,11 +48,11 @@ public class ArrayDequeTest {
         ArrayDeque<Integer> A = new ArrayDeque<>();
         System.out.println(A.removeFirst());
 
-        for(int i = 0; i < 20; i++) {
+        for (int i = 0; i < 20; i++) {
             A.addLast(i + 1);
         }
 
-        for(int i = 0; i < 20; i++) {
+        for (int i = 0; i < 20; i++) {
             System.out.println(A.removeFirst());
         }
 
@@ -63,11 +63,11 @@ public class ArrayDequeTest {
         ArrayDeque<Integer> A = new ArrayDeque<>();
         System.out.println(A.removeLast());
 
-        for(int i = 0; i < 20; i++) {
+        for (int i = 0; i < 20; i++) {
             A.addLast(i + 1);
         }
 
-        for(int i = 0; i < 20; i++) {
+        for (int i = 0; i < 20; i++) {
             System.out.println(A.removeLast());
         }
 

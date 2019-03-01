@@ -82,9 +82,9 @@ public class ArrayDeque<T> {
             return null;
         }
 
-        double FACTOR = 0.25;
-        double factor = ((double)size) / items.length;
-        if (factor < FACTOR) {
+        double Factor = 0.25;
+        double factor = ((double) size) / items.length;
+        if (factor < Factor) {
             resize(0.5);
         }
 
@@ -103,9 +103,9 @@ public class ArrayDeque<T> {
             return null;
         }
 
-        double FACTOR = 0.25;
-        double factor = ((double)size) / items.length;
-        if (factor < FACTOR) {
+        double Factor = 0.25;
+        double factor = ((double) size) / items.length;
+        if (factor < Factor) {
             resize(0.5);
         }
 

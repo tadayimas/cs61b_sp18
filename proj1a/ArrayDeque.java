@@ -13,10 +13,10 @@ public class ArrayDeque<T> {
         return result;
     }
 
-    private void resize(double factor){
+    private void resize(double factor) {
         T[] items2 = (T []) new Object[(int) (items.length * factor)];
         int p = mod((nextFirst + 1), items.length);
-        for(int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             items2[i] = items[p];
             p = mod((p + 1), items.length);
         }
@@ -36,7 +36,9 @@ public class ArrayDeque<T> {
 
     /* Adds an item of type T to the front of the deque */
     public void addFirst(T item) {
-        if(size == items.length) resize(2);
+        if (size == items.length) {
+            resize(2);
+        }
         items[nextFirst] = item;
         nextFirst = mod((nextFirst - 1), items.length);
         size += 1;
@@ -44,7 +46,9 @@ public class ArrayDeque<T> {
 
     /*  Adds an item of type T to the back of the deque */
     public void addLast(T item) {
-        if(size == items.length) resize(2);
+        if (size == items.length) {
+            resize(2);
+        }
         items[nextLast] = item;
         nextLast = mod((nextLast + 1), items.length);
         size += 1;
@@ -52,7 +56,9 @@ public class ArrayDeque<T> {
 
     /* Returns true if deque is empty, false otherwise */
     public boolean isEmpty() {
-        if (size == 0) return true;
+        if (size == 0) {
+            return true;
+        }
         return false;
     }
     /* Returns the number of items in the deque */
@@ -63,7 +69,7 @@ public class ArrayDeque<T> {
     /* Prints the items in the deque from first to last */
     public void printDeque() {
         int p = mod((nextFirst + 1), items.length);
-        for(int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             System.out.print(items[p]);
             System.out.print(' ');
             p = mod((p + 1), items.length);
@@ -72,11 +78,15 @@ public class ArrayDeque<T> {
 
     /* Removes and returns the item at the front of the deque */
     public T removeFirst() {
-        if(size == 0) return null;
+        if (size == 0) {
+            return null;
+        }
 
         double FACTOR = 0.25;
         double factor = ((double)size) / items.length;
-        if(factor < FACTOR) resize(0.5);
+        if (factor < FACTOR) {
+            resize(0.5);
+        }
 
         int p = mod((nextFirst + 1), items.length);
         nextFirst = p;
@@ -89,11 +99,15 @@ public class ArrayDeque<T> {
 
     /* Removes and returns the item at the back of the deque */
     public T removeLast() {
-        if(size == 0) return null;
+        if (size == 0) {
+            return null;
+        }
 
         double FACTOR = 0.25;
         double factor = ((double)size) / items.length;
-        if(factor < FACTOR) resize(0.5);
+        if (factor < FACTOR) {
+            resize(0.5);
+        }
 
         int p = mod((nextLast - 1), items.length);
         nextLast = p;
@@ -106,9 +120,11 @@ public class ArrayDeque<T> {
 
     /* Gets the item at the given index */
     public T get(int index) {
-        if(index < 0 || index > size-1) return null;
+        if (index < 0 || index > size - 1) {
+            return null;
+        }
         int p = mod((nextFirst + 1), items.length);
-        for(int i = 0; i < index; i++) {
+        for (int i = 0; i < index; i++) {
             p = mod((p + 1), items.length);
         }
         return items[p];

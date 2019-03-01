@@ -4,12 +4,21 @@ public class ArrayDeque<T> {
     private int nextFirst;
     private int nextLast;
 
+
+    private int mod(int x, int y) {
+        int result = x % y;
+        if (result < 0) {
+            result += y;
+        }
+        return result;
+    }
+
     private void resize(double factor){
         T[] items2 = (T []) new Object[(int) (items.length * factor)];
-        int p = (nextFirst + 1) % items.length;
+        int p = mod((nextFirst + 1), items.length);
         for(int i = 0; i < size; i++) {
             items2[i] = items[p];
-            p = (p + 1) % items.length;
+            p = mod((p + 1), items.length);
         }
 
         items = items2;
@@ -29,7 +38,7 @@ public class ArrayDeque<T> {
     public void addFirst(T item) {
         if(size == items.length) resize(2);
         items[nextFirst] = item;
-        nextFirst = (nextFirst - 1) % items.length;
+        nextFirst = mod((nextFirst - 1), items.length);
         size += 1;
     }
 
@@ -37,7 +46,7 @@ public class ArrayDeque<T> {
     public void addLast(T item) {
         if(size == items.length) resize(2);
         items[nextLast] = item;
-        nextLast = (nextLast + 1) % items.length;
+        nextLast = mod((nextLast + 1), items.length);
         size += 1;
     }
 
@@ -53,11 +62,11 @@ public class ArrayDeque<T> {
 
     /* Prints the items in the deque from first to last */
     public void printDeque() {
-        int p = (nextFirst + 1) % items.length;
+        int p = mod((nextFirst + 1), items.length);
         for(int i = 0; i < size; i++) {
             System.out.print(items[p]);
             System.out.print(' ');
-            p = (p + 1) % items.length;
+            p = mod((p + 1), items.length);
         }
     }
 
@@ -69,7 +78,7 @@ public class ArrayDeque<T> {
         double factor = ((double)size) / items.length;
         if(factor < FACTOR) resize(0.5);
 
-        int p = (nextFirst + 1) % items.length;
+        int p = mod((nextFirst + 1), items.length);
         nextFirst = p;
         T temp = items[p];
         items[p] = null;
@@ -86,7 +95,7 @@ public class ArrayDeque<T> {
         double factor = ((double)size) / items.length;
         if(factor < FACTOR) resize(0.5);
 
-        int p = (nextLast - 1) % items.length;
+        int p = mod((nextLast - 1), items.length);
         nextLast = p;
         T temp = items[p];
         items[p] = null;
@@ -98,9 +107,9 @@ public class ArrayDeque<T> {
     /* Gets the item at the given index */
     public T get(int index) {
         if(index < 0 || index > size-1) return null;
-        int p = (nextFirst + 1) % items.length;
+        int p = mod((nextFirst + 1), items.length);
         for(int i = 0; i < index; i++) {
-            p = (p + 1) % items.length;
+            p = mod((p + 1), items.length);
         }
         return items[p];
 

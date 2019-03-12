@@ -22,10 +22,10 @@ public class Palindrome {
 
     public boolean isPalindrome(String word, CharacterComparator cc) {
         Deque d = wordToDeque(word);
-        for (int i = 0; i < word.length()/2; i++) {
+        for (int i = 0; i < word.length() / 2; i++) {
             char front = (char) d.removeFirst();
             char back = (char) d.removeLast();
-            if(!cc.equalChars(front, back)) {
+            if (!cc.equalChars(front, back)) {
                 return false;
             }
         }

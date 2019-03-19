@@ -32,15 +32,19 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
         return new myIterator();
     }
     private class myIterator implements Iterator<T> {
+        private int len = fillCount;
 
         @Override
         public boolean hasNext() {
-            return fillCount > 0;
+            return len > 0;
         }
 
         @Override
         public T next() {
-            return dequeue();
+            T val = dequeue();
+            enqueue(val);
+            len -= 1;
+            return val;
         }
     }
 

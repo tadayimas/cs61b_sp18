@@ -18,7 +18,7 @@ public class GuitarString {
         //       accuracy, use the Math.round() function before casting.
         //       Your buffer should be initially filled with zeros.
         buffer = new ArrayRingBuffer<>((int) Math.round(SR / frequency));
-        while(!buffer.isFull()) {
+        while (!buffer.isFull()) {
             buffer.enqueue(0.0);
         }
     }
@@ -31,7 +31,7 @@ public class GuitarString {
         //       double r = Math.random() - 0.5;
         //
         //       Make sure that your random numbers are different from each other.
-        while(!buffer.isEmpty()) {
+        while (!buffer.isEmpty()) {
             buffer.dequeue();
         }
 
@@ -44,7 +44,7 @@ public class GuitarString {
      * the Karplus-Strong algorithm. 
      */
     public void tic() {
-        // TODO: Dequeue the front sample and enqueue a new sample that is
+        // TODO  Dequeue the front sample and enqueue a new sample that is
         //       the average of the two multiplied by the DECAY factor.
         //       Do not call StdAudio.play().
         if (buffer.fillCount() <= 1) {
@@ -58,7 +58,7 @@ public class GuitarString {
 
     /* Return the double at the front of the buffer. */
     public double sample() {
-        // TODO: Return the correct thing.
+        // TODO  Return the correct thing.
         //if (buffer.peek() == null) return 0.0;
         return buffer.peek();
     }

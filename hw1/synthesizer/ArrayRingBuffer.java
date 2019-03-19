@@ -1,5 +1,7 @@
 package synthesizer;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 //TODO Make sure to make this class and all of its methods public
 public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
@@ -29,23 +31,32 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new myiterator();
+        return (new MyIterator()).copy.iterator();
     }
-    private class myiterator implements Iterator<T> {
-        private int len = fillCount;
+    private class MyIterator {
+        private List<T> copy = new ArrayList<>(capacity);
 
-        @Override
-        public boolean hasNext() {
-            return len > 0;
+        public MyIterator() {
+            int len = fillCount;
+            for (int i = 0; i < len; i++) {
+                T val = dequeue();
+                enqueue(val);
+                copy.add(val);
+            }
         }
 
-        @Override
-        public T next() {
-            T val = dequeue();
-            enqueue(val);
-            len -= 1;
-            return val;
-        }
+//        @Override
+//        public boolean hasNext() {
+//            return len > 0;
+//        }
+//
+//        @Override
+//        public T next() {
+//            T val = dequeue();
+//            enqueue(val);
+//            len -= 1;
+//            return val;
+//        }
     }
 
     /**

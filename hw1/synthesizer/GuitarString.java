@@ -13,7 +13,7 @@ public class GuitarString {
 
     /* Create a guitar string of the given frequency.  */
     public GuitarString(double frequency) {
-        // TODO: Create a buffer with capacity = SR / frequency. You'll need to
+        // TODO Create a buffer with capacity = SR / frequency. You'll need to
         //       cast the result of this divsion operation into an int. For better
         //       accuracy, use the Math.round() function before casting.
         //       Your buffer should be initially filled with zeros.
@@ -26,7 +26,7 @@ public class GuitarString {
 
     /* Pluck the guitar string by replacing the buffer with white noise. */
     public void pluck() {
-        // TODO: Dequeue everything in the buffer, and replace it with random numbers
+        // TODO Dequeue everything in the buffer, and replace it with random numbers
         //       between -0.5 and 0.5. You can get such a number by using:
         //       double r = Math.random() - 0.5;
         //
